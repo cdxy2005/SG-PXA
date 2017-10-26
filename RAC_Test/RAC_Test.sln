@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAC_Test", "RAC_Test\RAC_Test.csproj", "{A8E07A84-60A0-4CEB-B216-2A05E0024E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackSys.TestLab.Instrument", "RackSys.TestLab.Instrument\RackSys.TestLab.Instrument.csproj", "{6744F4CE-10E2-4F82-904C-888110E8829B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug(Simulate)|Any CPU = Debug(Simulate)|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Debug(Simulate)|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Debug(Simulate)|Any CPU.Build.0 = Debug|Any CPU
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E07A84-60A0-4CEB-B216-2A05E0024E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Debug(Simulate)|Any CPU.ActiveCfg = Debug(Simulate)|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Debug(Simulate)|Any CPU.Build.0 = Debug(Simulate)|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6744F4CE-10E2-4F82-904C-888110E8829B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

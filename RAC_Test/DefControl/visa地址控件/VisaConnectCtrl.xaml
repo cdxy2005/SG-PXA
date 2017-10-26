@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="RAC_Test.DefControl.VisaConnectCtrl"
+          
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="300">
+    <StackPanel>
+        <!--连接方式选择-->
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="60" Text="连接方式：" TextAlignment="Center" VerticalAlignment="Center" />
+                <ComboBox Name="_cbConnectionTypeItems" Height="25" Width="120" SelectionChanged="_cbVisaAddrChanged"/>
+            </StackPanel>
+            <Border BorderThickness="1" BorderBrush="DarkGreen"  Margin="5,2,5,2" />
+        </StackPanel>
+
+        <Border BorderThickness="1" BorderBrush="LightGray">
+            <StackPanel>
+                <!--网口-->
+                <StackPanel Name="_spLan">
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Width="60" Text="IP：" TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <TextBox Name="_ipAddr" Width="220" TextAlignment="Right" VerticalAlignment="Center" TextChanged="VisaAddr_TextChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Width="60" Text="端口号：" TextAlignment="Right"  VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <TextBox Name="_lanPort" Width="80" TextAlignment="Right" VerticalAlignment="Center" TextChanged="VisaAddr_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--串口-->
+                <StackPanel Name="_spSerialPort">
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="串口号:" Height="25"/>
+                        <ComboBox Name="_cbComId" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="波特率:" Height="25"/>
+                        <ComboBox Name="_cbBounds" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="数据位:" Height="25"/>
+                        <ComboBox Name="_cbDataBit" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="校验位:" Height="25"/>
+                        <ComboBox Name="_cbCheckBit" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="停止位:" Height="25"/>
+                        <ComboBox Name="_cbStopBit" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--GPIB-->
+                <StackPanel Name="_spGpib">
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  Content="板卡编号:"/>
+                        <ComboBox Name="_cbGPIBCardNums" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  Content="主地址:"/>
+                        <ComboBox Name="_cbGPIBMainAddr" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  Content="从地址:"/>
+                        <ComboBox Name="_cbGPIBViceAddr" Width="80" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <!--USB-->
+                <StackPanel Name="_spUsb">
+
+                </StackPanel>
+                <!--从IO库选择Visa地址-->
+                <StackPanel Name="_spIoLib">
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  Content="Visa地址:"/>
+                        <ComboBox Name="_cbIOLib" Width="220" Height="20" SelectionChanged="_cbVisaAddrChanged"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--自定义Visa地址-->
+                <StackPanel Name="_spUserDefine">
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Width="60" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  Content="Visa地址:"/>
+                        <TextBox Name="_tbVisaAddr" Width="220" Height="20" TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" TextChanged="VisaAddr_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+        <Image Height="0" Name="image1" Stretch="Fill" Width="1" />
+    </StackPanel>
+</UserControl>

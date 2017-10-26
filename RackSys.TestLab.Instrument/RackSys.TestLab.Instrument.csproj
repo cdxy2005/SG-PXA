@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6744F4CE-10E2-4F82-904C-888110E8829B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RackSys.TestLab.Instrument</RootNamespace>
+    <AssemblyName>RackSys.TestLab.Instrument</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\RAC_Test\Lib\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\TR29\RAC-TestLab\libPlatform\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug%28Simulate%29|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Simulate</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Debug\RackSys.TestLab.Instrument.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>testlab.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgilentPNA835x, Version=1.9.0.0, Culture=neutral, PublicKeyToken=12e52ea699e4c8d4">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\RAC_Test\Lib\AgilentPNA835x.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RackSys.RFLib.Npr">
+      <HintPath>Lib\RackSys.RFLib.Npr.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RackSys.TestLab">
+      <HintPath>..\..\TR29\RAC-TestLab\lib\RackSys.TestLab.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RackSys.TestLab.DataAccess">
+      <HintPath>..\..\TR29\RAC-TestLab\lib\RackSys.TestLab.DataAccess.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RackSys.TestLab.Visa">
+      <HintPath>..\..\TR29\RAC-TestLab\lib\RackSys.TestLab.Visa.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="00-校验算法\异或校验\XOR16.cs" />
+    <Compile Include="20路信号监测\MutiChannelDataAcquisition.cs" />
+    <Compile Include="Alarm\Alarm.cs" />
+    <Compile Include="DUT\DUT.cs" />
+    <Compile Include="InstrumentBase\InstrumentBase.cs" />
+    <Compile Include="IO部分\IOManager.cs" />
+    <Compile Include="InstrumentBase\ScpiInstrument.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="信号源\Npr信号产生\NprSignalGenerator.cs" />
+    <Compile Include="信号源\模拟信号源\AgilentE8257D.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\模拟信号源\AgilentEXGnMXG.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\模拟信号源\AnritsuMG3694A.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\模拟信号源\AV1464BSignalGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\模拟信号源\SignalGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\模拟信号源\SMF100a.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\矢量信号源\AgilentE8267D.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\矢量信号源\ESGPSG.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="信号源\矢量信号源\VectorSignalGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="功率计\AgilentEMP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="功率计\AgilentN1914A.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="功率计\AnrisuML2496.CS">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="功率计\功率放大器\0_功率放大器基类\PowerAmplefierBase.cs" />
+    <Compile Include="功率计\功率放大器\BONN\PowerAmplefier_BONN_BLMA_1018_10D.cs" />
+    <Compile Include="功率计\PowerMeter.cs" />
+    <Compile Include="功率计\AgilentN1912A.cs" />
+    <Compile Include="噪声系数分析仪\AgilentN8975A.cs" />
+    <Compile Include="噪声系数分析仪\AV3985A.cs" />
+    <Compile Include="噪声系数分析仪\NoiseFigureAnalyzer.cs" />
+    <Compile Include="地检设备\CSBDevice.cs" />
+    <Compile Include="地检设备\RAC_CSBDevice.cs" />
+    <Compile Include="多通道控制器\MultiChannelController.cs" />
+    <Compile Include="开关矩阵\Matrix.cs" />
+    <Compile Include="开关矩阵\SWTRMatrixS.cs" />
+    <Compile Include="开关矩阵\输入开关\InputMatrix_L4491_HighPower.cs" />
+    <Compile Include="开关矩阵\输入开关\InputMatrix_L4491.cs" />
+    <Compile Include="开关矩阵\输入开关\InputMatrix_41_AV3638AD.cs" />
+    <Compile Include="开关矩阵\输出开关\OutputMatrix_41_AV3638AD.cs" />
+    <Compile Include="开关矩阵\输出开关\OutputMatrix_L4491.cs" />
+    <Compile Include="数据采集开关单元\Agilent34970A.cs" />
+    <Compile Include="数据采集开关单元\MutiFunctionUnit.cs" />
+    <Compile Include="00-校验算法\CRC\CCITTCRC16.cs" />
+    <Compile Include="00-校验算法\CRC\CRC16.cs" />
+    <Compile Include="00-校验算法\CheckAlgorithmLib.cs" />
+    <Compile Include="00-校验算法\CRC\CRC32.cs" />
+    <Compile Include="00-校验算法\CRC\CRC8.cs" />
+    <Compile Include="00-校验算法\和校验\Sum16.cs" />
+    <Compile Include="波控单元\CtrlUnit.cs" />
+    <Compile Include="波控单元\CtrlUnitTR29.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="温度巡检仪\KSL_XIAN504.cs" />
+    <Compile Include="温度巡检仪\XSL_D_16RS2P0V0.cs" />
+    <Compile Include="温度巡检仪\TemperatureMonitorBase.cs" />
+    <Compile Include="温度巡检仪\TemperatureMonitorConfig.cs" />
+    <Compile Include="温箱\ACSIncubator.cs" />
+    <Compile Include="温箱\FUQIIncubator.cs" />
+    <Compile Include="温箱\Incubator.cs" />
+    <Compile Include="温箱\IncubatorConfig.cs" />
+    <Compile Include="直流电源控制\AgilentE3634A.cs" />
+    <Compile Include="直流电源控制\Agilent6675A.cs" />
+    <Compile Include="直流电源控制\AgilentE3649A.cs" />
+    <Compile Include="直流电源控制\AgilentN6700B.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="矢网\AgilentN5242A.cs" />
+    <Compile Include="矢网\NetworkAnalyser.cs" />
+    <Compile Include="示波器\AgilentOSCDSO90000A.cs" />
+    <Compile Include="示波器\DSO-X 4104A.cs" />
+    <Compile Include="示波器\OSCBase.cs" />
+    <Compile Include="调制单元\ModulationUnit.cs" />
+    <Compile Include="调制单元\ModulationUnit504.cs" />
+    <Compile Include="辅助工具\ImageConvertor.cs" />
+    <Compile Include="输入开关\InputMatrix.cs" />
+    <Compile Include="输出开关\OutputMatrix.cs" />
+    <Compile Include="频率计\Agilent53130.cs" />
+    <Compile Include="频率计\Agilent53151.cs" />
+    <Compile Include="频率计\FrequencyCounter.cs" />
+    <Compile Include="频谱分析仪\ScpiSpectrumAnalyzerAV4033.cs" />
+    <Compile Include="频谱分析仪\ScpiSpectrumAnalyzer.cs" />
+    <Compile Include="频谱分析仪\SpectrumAnalyzer.cs" />
+    <Compile Include="直流电源控制\AgilentN6705B.cs" />
+    <Compile Include="直流电源控制\DCPowerBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="频谱分析仪\ScpiSpectrumAnalyzerFSW.cs" />
+    <Compile Include="频谱分析仪\ScpiSpectrumAnalyzerE4446A.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="testlab.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

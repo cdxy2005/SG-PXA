@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="RAC_Test.DefControl.imageControl"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="150" Width="200" UseLayoutRounding="True" Height="100">
+    <UserControl.Resources>
+        <Style x:Key="devEnable" TargetType="{x:Type Image}" >
+            <Style.Triggers  >
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Opacity" Value="0.5"></Setter>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Margin="0" MouseDown="get_devInfo" Loaded="Grid_Loaded" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave" IsHitTestVisible="True">
+        <Grid.RenderTransform>
+            <ScaleTransform x:Name="sscale">
+
+            </ScaleTransform>
+        </Grid.RenderTransform>
+        <Image Style="{StaticResource devEnable}" Name="dev"   Stretch="Uniform" Source="/RAC_Test;component/img/singleSource1.png">
+
+            <Image.Effect>
+                <DropShadowEffect x:Name="zz" Color="White" ShadowDepth="0" Direction="0" BlurRadius="0"/>
+
+            </Image.Effect>
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scale"  >
+
+                </ScaleTransform>
+            </Image.RenderTransform>
+            <Image.ContextMenu >
+                <ContextMenu  Name="conMenu" Width="105">
+                    <MenuItem Header="启用设备" Name="devEnable" Click="devEnable_Click" IsCheckable="True" IsChecked="True"  ></MenuItem>
+                    <!--<MenuItem Header="校准设备" Name="devCal" Click="devCal_Click" ></MenuItem>
+                    
+                    <MenuItem Header="设备属性" Name="devAtr" Click="devAtr_Click"></MenuItem>-->
+                    <!--
+                    <MenuItem Header="查看校准数据" Name="devCalView" ></MenuItem>
+                    -->
+                </ContextMenu>
+            </Image.ContextMenu>
+
+        </Image>
+        <Image Name="state" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="22"  Stretch="Uniform" Source="/RAC_Test;component/Img/init.png" ></Image>
+
+    </Grid>
+</UserControl>
+

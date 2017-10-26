@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="RAC_Test.DefControl.VisaAddrControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             
+             d:DesignHeight="180" d:DesignWidth="500" Width="475" Height="150">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <RadioButton  Grid.Row="0" Grid.Column="0" Margin="10,0,0,0"  Content="输入设备通信地址"  IsChecked="True" Name="rbInputAddress" Click="rbInputAddress_Click"  />
+        <RadioButton  Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" Content="从IO库中选择设备通信地址" Name="rbIOLibAddr" Click="rbIOLibAddr_Click" />
+        <GroupBox Grid.Row="1" Grid.Column="0"  Name="gbAddress" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="类型：">
+                        
+                    </Label>
+                    <ComboBox   Name="comLanOrGpib" SelectionChanged="_cbVisaAddrChanged"  Height="23" Width="60">
+                    <!--<ComboBoxItem Content="LAN" />
+                    <ComboBoxItem Content="GPIB" />
+                    <ComboBoxItem Content="串口" />-->
+                </ComboBox >
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid   >
+                <Grid.ColumnDefinitions>
+                     
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                </Grid.RowDefinitions>
+                
+                <Grid  Name="grLan" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+             
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="IP地址\主机名" Grid.Row="1" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Label Content="端口号" Name="labPort" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-5,0,0,0"/>
+
+                    <TextBox   Grid.Row="2" Grid.Column="0" Margin="2" Height="23" Name="txtInputAddress"  TextChanged="VisaAddr_TextChanged"    />
+                    <TextBox   Grid.Row="2" Grid.Column="1" Margin="2" Height="23" Name="txtInputAddressPort" IsReadOnly="True"   Background="#FFFFFFE2"  TextChanged="VisaAddr_TextChanged" />
+
+
+
+                </Grid>
+                
+                <Grid Name="grGPIB" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="12*" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Content="板卡编号:"/>
+                    <ComboBox Grid.Row="0" Grid.Column="2" Height="23" Name="comBordNum" SelectionChanged="_cbVisaAddrChanged" />
+
+                    <Label Grid.Row="2" Grid.Column="1" Content="主地址:"/>
+                    <ComboBox Grid.Row="2" Grid.Column="2" Height="23" Name="comMainNum" SelectionChanged="_cbVisaAddrChanged"/>
+
+                    <Label Grid.Row="4" Grid.Column="1" Content="从地址:"/>
+                    <ComboBox Grid.Row="4" Grid.Column="2" Height="23" Name="comNextNum" SelectionChanged="_cbVisaAddrChanged" />
+                </Grid>
+
+                <Grid Name="grCom" Visibility="Hidden" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="12*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="12*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="串口号:" />
+                    <ComboBox Name="_cbComId" Grid.Row="0" Grid.Column="1"  Height="23" SelectionChanged="_cbVisaAddrChanged"/>
+                    <Label Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="波特率:"  />
+                    <ComboBox Name="_cbBounds" Grid.Row="0" Grid.Column="3" Height="23" SelectionChanged="_cbVisaAddrChanged"/>
+                    <Label Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="数据位:"  />
+                    <ComboBox Name="_cbDataBit" Grid.Row="2" Grid.Column="1" Height="23" SelectionChanged="_cbVisaAddrChanged"/>
+                    <Label Grid.Row="2" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="校验位:" />
+                    <ComboBox Name="_cbCheckBit" Grid.Row="2" Grid.Column="3" Height="23" SelectionChanged="_cbVisaAddrChanged"/>
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Content="停止位:" />
+                    <ComboBox Name="_cbStopBit" Grid.Row="4" Grid.Column="1" Height="23" SelectionChanged="_cbVisaAddrChanged"/>
+                </Grid>
+
+               
+            </Grid>
+
+          
+
+        </GroupBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" Height="23"  SelectedIndex="0" Margin="5" Name="ioLibsInterfacesComboBox" IsEditable="False" IsEnabled="False" SelectionChanged="_cbVisaAddrChanged">
+        </ComboBox>
+    </Grid>
+</UserControl>

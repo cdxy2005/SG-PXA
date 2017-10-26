@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RackSys.TestLab.Instrument.MutiChannelDataAcquisition" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>20路信号监测\MutiChannelDataAcquisition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.InstrumentBase" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhgAAEAACEAAQAAAAEAAAAACABEBAMqIAIgABABAAgE=</HashCode>
+      <FileName>InstrumentBase\InstrumentBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.ScpiInstrument" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAEAAAAEQAAABgQAAAAAAAAEQAAAAAAAAEAAAAIA=</HashCode>
+      <FileName>InstrumentBase\ScpiInstrument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.IOManager" Collapsed="true">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAABAEAAAAAAAAAIAAAAAAABAA=</HashCode>
+      <FileName>IO部分\IOManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.MultiChannelController" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>多通道控制器\MultiChannelController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.ImageConvertor" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>辅助工具\ImageConvertor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentEmp" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>功率计\AgilentEMP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentN1914" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAACgIABEAAiBAAADAIAAsAAAAAAAAQAAACABA=</HashCode>
+      <FileName>功率计\AgilentN1914A.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.PowerMeter" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAACgIABEAAiBAAALBIAAsAAAAAAAEQAAACABA=</HashCode>
+      <FileName>功率计\PowerMeter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.ScpiSpectrumAnalyzer" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgISAIACAhAphBEMKBYoQZoCARABIU4AAJWAAcdEBig=</HashCode>
+      <FileName>频谱分析仪\ScpiSpectrumAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.SpectrumAnalyzer" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ogISCIBKAjIhBBEKKBYIQZhAgRABAF4AAJGAAcdEBio=</HashCode>
+      <FileName>频谱分析仪\SpectrumAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.TOITestResult" Collapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAABAABgIACAAAAAAEAAoAJAABAAAAAAABIABIA=</HashCode>
+      <FileName>频谱分析仪\SpectrumAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentPNA" Collapsed="true">
+    <Position X="14" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IaAAAEAsAEAABABAAAAAgAAIERAuABACUISAwIABQNA=</HashCode>
+      <FileName>矢网\AgilentN5242A.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.NetworkAnalyzer" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IagAAMAsAEAABARAEAAJgIRIERAuABACUIWAwIABYNA=</HashCode>
+      <FileName>矢网\NetworkAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.OutputMatrix" Collapsed="true">
+    <Position X="23" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>输出开关\OutputMatrix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.InputMatrix" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>输入开关\InputMatrix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentE8257D" Collapsed="true">
+    <Position X="16.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>信号源\AgilentE8257D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentEsgAndPsg" Collapsed="true">
+    <Position X="18.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAgBYAAIAAQAAAUFAAIAAABAAJIBAAkYIXAgCBAAgA=</HashCode>
+      <FileName>信号源\ESGPSG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.SignalGenerator" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wkIgBCBiAEERQAIQgEIIANFAAAkABASEAKlQALIIjgE=</HashCode>
+      <FileName>信号源\SignalGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.VectorSignalGenerator" Collapsed="true">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAIACIAAQAAAQEgAAAAEAAABIAAAAZAGAkAQAAAA=</HashCode>
+      <FileName>信号源\VectorSignalGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.AgilentN6705B" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAEAAAAAAAEAAAAAAAAAAAAABAAAAAAEEAA=</HashCode>
+      <FileName>直流电源控制\AgilentN6705B.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RackSys.TestLab.Instrument.DCPowerBase" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAABAAAAAEAAIBQIAAAAAAABAEAAAAEEAA=</HashCode>
+      <FileName>直流电源控制\DCPowerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

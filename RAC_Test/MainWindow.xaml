@@ -1,0 +1,367 @@
+﻿<Window x:Class="RAC_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:conver="clr-namespace:PluginFramework.conver;assembly=PluginFramework"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:myTextBox="clr-namespace:RackSys.TestLab.NumericControlLibForWpf;assembly=RackSys.TestLab"
+        xmlns:my="clr-namespace:RAC_Test.DefControl" 
+        Closing="Window_Closing"
+        mc:Ignorable="d"
+        Title="上位机测试系统" Height="720" Width="1050" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <conver:FreConverter x:Key="freConver"></conver:FreConverter>
+        <conver:PwConverter x:Key="pwConver"></conver:PwConverter>
+        <conver:pwStepConverter x:Key="pwStepConver"></conver:pwStepConverter>
+        <conver:ShortTimeConverter x:Key="shortTimeConver"></conver:ShortTimeConverter>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="Gray">上位机测试系统</Label>
+        <Border Grid.Row="1" BorderThickness="0,2" BorderBrush="DarkGreen">
+            <Grid Grid.Row="1"  Name="gridParam">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="130"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,2" BorderBrush="Gray"></Border>
+                <Border Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="0,2" BorderBrush="Gray"></Border>
+                <Border Grid.Row="5"   Grid.ColumnSpan="2" BorderThickness="0,2" BorderBrush="Gray"></Border>
+                <Border Grid.Row="7"   Grid.ColumnSpan="2" BorderThickness="0,2" BorderBrush="Gray"></Border>
+                <Border Grid.Column="0" Grid.RowSpan="8" BorderThickness="0,0,2,0" BorderBrush="DarkGreen"></Border>
+                <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">被测物</Label>
+                <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">测试项</Label>
+                <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">仪  表</Label>
+                <Label Grid.Row="3" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">参数 &amp;校准</Label>
+                <!--<Label Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">校  准</Label>-->
+                <Label Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">执  行</Label>
+                <Label Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">报  告</Label>
+                <Label Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="DarkGreen">增益调节</Label>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" Margin="30,10,0,0">
+                        <Label VerticalAlignment="Center">被测物名称:</Label>
+                        <TextBox Margin="10,0,0,0" Width="53" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                             Text="{Binding DUTName}"></TextBox>
+                        <Label Margin="20,0,0,0" VerticalAlignment="Center">通道:</Label>
+                        <TextBox Margin="10,0,0,0" Width="60" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                             Text="{Binding ChannelNumber}"></TextBox>
+                        <Label Margin="20,0,0,0" VerticalAlignment="Center">等待时间:</Label>
+                        <TextBox Margin="10,0,0,0" Width="60" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                             Text="{Binding sleepTime}"></TextBox>
+                        <Label Content="S"></Label>
+
+                        <Label VerticalAlignment="Center" Margin="20,0,0,0"  >端口设置及连接:</Label>
+                        <!--<ComboBox Margin="10,0,0,0" Width="150" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                             Name="cmbPort" IsEditable="False"></ComboBox>-->
+
+                        <Button Width="80" Height="25" Margin="20,0,0,0" Name="btnSet" Click="btnSet_Click">设置</Button>
+                        <Button Width="80" Height="25" Margin="20,0,0,0"  Name="btnCon" Click="btnCon_Click">连接</Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" Margin="30,5,0,0" Height="30">
+                        <Label VerticalAlignment="Center">中  频  频   率:</Label>
+                        <myTextBox:NumericTextBoxForWpf Margin="10,2,0,2"  HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="200" Height="26" Text="{Binding Path=DUTOutFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                        <Label VerticalAlignment="Center" Margin="20,0,0,0" Visibility="Collapsed">变频选择:</Label>
+                        <RadioButton Margin="10,0,0,0" Width="60"  VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                           Name="rbUp"  Checked="RadioButton_Checked"  GroupName="freqConver" Visibility="Collapsed">和变频</RadioButton>
+                        <RadioButton Margin="10,0,0,0" Width="60" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                           Name="rbDown"  Checked="RadioButton_Checked_1"  GroupName="freqConver" Visibility="Collapsed">差变频</RadioButton>
+                        <Label VerticalAlignment="Center" Margin="80,0,0,0">收发选择:</Label>
+                        <RadioButton Margin="10,0,0,0" Width="60"  VerticalAlignment="Center" VerticalContentAlignment="Center"
+                           Name="rbTx"  Checked="rbTx_Checked" RenderTransformOrigin="0.5,0.5" GroupName="DutWork">发射</RadioButton>
+                        <RadioButton Margin="10,0,0,0" Width="60"  VerticalAlignment="Center" VerticalContentAlignment="Center"
+                           Name="rbRx" Checked="rbRx_Checked"  GroupName="DutWork">接收</RadioButton>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <CheckBox  VerticalAlignment="Center" IsChecked="{Binding IsPowerTest}">功率测试+增益+杂散+无源测试</CheckBox>
+                    <!--<CheckBox  VerticalAlignment="Center" IsChecked="{Binding IsClutterTest}" Margin="30,0">杂波测试</CheckBox>
+                    <CheckBox  VerticalAlignment="Center" IsChecked="{Binding IsNoiseTest}">噪声测试</CheckBox>
+                    <CheckBox  VerticalAlignment="Center" IsChecked="{Binding IsNoSourceTest}" Margin="30,0">无源测试</CheckBox>-->
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                    <my:imageControl HorizontalAlignment="Left"  x:Name="SG" VerticalAlignment="Top" Width="145" Height="56" DevSource="img/singleSource1.png" DevType="normal" DevState="alart"  leftPNum="1" rightPNum="1">
+
+                    </my:imageControl>
+
+                    <my:imageControl HorizontalAlignment="Left"  x:Name="PXA" VerticalAlignment="Top" Width="145" Height="56" DevSource="img/singleAnalyzer1.png" DevType="normal" DevState="normal" leftPNum="1" rightPNum="1" Margin="50,0">
+
+                    </my:imageControl>
+                    <Button Name="btnCheck" Height="30" Width="120" Click="btnCheck_Click">仪表巡检</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TabControl >
+                        <TabItem Header="有源测试参数设置" >
+                            <Grid  Margin="5,10" Name="gridSGAndPxa" >
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">测试参数：</Label>
+                                <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">分析参数：</Label>
+                                <Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">输入校准：</Label>
+                                <Label Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">输出校准：</Label>
+                                <!--<Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">噪声校准：</Label>-->
+
+
+
+                                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >起始频率：</Label>
+
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" x:Name="inputStarFre" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StartFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="终止频率："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" x:Name="inputStopFre" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StopFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="频率间隔：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="6" HorizontalAlignment="Left" x:Name="FreSpace" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=FreqSpac, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="测试功率：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="8" HorizontalAlignment="Left" x:Name="inputAPower"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=InPower,   Mode=TwoWay, Converter={StaticResource pwConver}}" UnitsType="POWERDBM" />
+
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >起始频率：</Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=AnaStartFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >终止频率：</Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=AnaStopFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+                                <Label  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="忽略带宽："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=IngroeFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="RBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=RBW, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="VBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="8" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=VBW,   Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+
+                                <!--<Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >输入损耗：</Label>-->
+                                <TextBox Name="textBoxActiveInput"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"   Height="26" 
+                                Margin="16,0,10,0"/>
+                                <Button Name="btnInput"  Grid.Row="3" Grid.Column="8" Width="80" Margin="5,2,5,0" Height="25" VerticalAlignment="Top" Click="btnInput_Click">校  准</Button>
+                                <TextBox Name="textBoxActiveOutput"  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"   Height="26" 
+                                 Margin="16,0,10,0"/>
+                                <Button Name="btnOutput"  Grid.Row="4" Grid.Column="8" Width="80" Margin="5,2,5,0" Height="25" VerticalAlignment="Top" Click="btnOutput_Click">校  准</Button>
+                                <!--<Label  Grid.Row="2" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="输出损耗："></Label>
+
+                                <TextBox Name="textBoxOutput" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"  Height="25" 
+                                 Text="{Binding InputFile}"/>
+                                <Button Name="btnOutput"  Grid.Row="2" Grid.Column="8" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom" Click="btnOutput_Click">选择输出</Button>-->
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="无源测试参数设置" Visibility="Collapsed">
+                            <Grid  Margin="5,10" Name="gridDutAndPxa">
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">测试参数：</Label>
+                                <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">分析参数：</Label>
+                                <Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">输出校准：</Label>
+                                <!--<Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">噪声校准：</Label>-->
+
+
+
+                                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >起始频率：</Label>
+
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"   VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StartFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="终止频率："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left"   VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StopFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="频率间隔：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="6" HorizontalAlignment="Left"   VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=FreqSpac, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="测试功率：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="8" HorizontalAlignment="Left"    VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=InPower,   Mode=TwoWay, Converter={StaticResource pwConver}}" UnitsType="POWERDBM" />
+
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >起始频率：</Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=AnaStartFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >终止频率：</Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=AnaStopFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+                                <Label  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="忽略带宽："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=IngroeFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="RBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=RBW, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="VBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="8" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=VBW,   Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+
+                                <!--<Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >输入损耗：</Label>-->
+                                <TextBox    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"   Height="26" 
+                                Name="PassiveTxtBox"  Text="{Binding InputFile}" Margin="16,0,10,0"/>
+                                <Button    Grid.Row="3" Grid.Column="8" Width="80" Margin="5,2,5,0" Height="25" VerticalAlignment="Top" Name="btnPassive" Click="btnPassive_Click">校  准</Button>
+                                <!--<Label  Grid.Row="2" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="输出损耗："></Label>-->
+
+                                <!--<TextBox   Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"  Height="25" 
+                                 Text="{Binding InputFile}"/>
+                                <Button   Grid.Row="2" Grid.Column="8" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom" Click="btnOutput_Click">选择输出</Button>-->
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="噪声测试参数设置" Visibility="Collapsed">
+                            <Grid  Margin="5,10" Name="gridNoise">
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">测试参数：</Label>
+                                <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">分析参数：</Label>
+                                <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">噪声校准：</Label>
+                                <!--<Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">噪声校准：</Label>-->
+
+
+
+                                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >起始频率：</Label>
+
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StartFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="终止频率："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=StopFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="频率间隔：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=FreqSpac, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="0" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="测试功率：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="0" Grid.Column="8" HorizontalAlignment="Left"   VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=InPower,   Mode=TwoWay, Converter={StaticResource pwConver}}" UnitsType="POWERDBM" />
+
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >测试带宽：</Label>
+
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=TestFreq, Mode=TwoWay,UpdateSourceTrigger=LostFocus, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="忽略带宽："></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=IngroeFreq, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="RBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=RBW, Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+                                <Label Grid.Row="1" Grid.Column="7" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="VBW：" ></Label>
+                                <myTextBox:NumericTextBoxForWpf Grid.Row="1" Grid.Column="8" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Width="85" Height="25" Text="{Binding Path=VBW,   Mode=TwoWay, Converter={StaticResource freConver}}" UnitsType="FREQUENCY" />
+
+
+                                <!--<Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" >噪声校准：</Label>-->
+                                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7"  IsReadOnly="True" Name="txtNFCal" Height="25" VerticalContentAlignment="Center" Margin="16,0,10,0"></TextBox>
+                                <Button Grid.Row="2" Grid.Column="8" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom"   Name="doCal" 
+                                Click="doCal_Click">噪声校准</Button>
+
+                                <!--<TextBox   Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"   Height="25" 
+                                 Text="{Binding InputFile}"/>
+                                <Button  Grid.Row="2" Grid.Column="4" Width="80" Margin="5,2,5,0" Height="25" VerticalAlignment="Top" Click="btnInput_Click">选择输入</Button>-->
+                                <!--<Label  Grid.Row="2" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"  Content="输出损耗："></Label>
+
+                                <TextBox Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" IsReadOnly="True" HorizontalAlignment="Stretch"  VerticalAlignment="Center" VerticalContentAlignment="Center"  Height="25" 
+                                 Text="{Binding InputFile}"/>
+                                <Button    Grid.Row="2" Grid.Column="8" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom" Click="btnOutput_Click">选择输出</Button>-->
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+
+                </StackPanel>
+                <!--<StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <Grid  >
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="0"></RowDefinition>
+                            <RowDefinition Height="0"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">噪声校准：</Label>
+                        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Heavy" Foreground="DarkGreen">路径校准：</Label>
+
+                        <TextBox Grid.Row="0" Grid.Column="1"  IsReadOnly="True" Name="txtNFCal" Height="25" VerticalContentAlignment="Center" Margin="16,0,0,0"></TextBox>
+                        <Button Grid.Row="0" Grid.Column="2" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom"   Name="doCal" 
+                                Click="doCal_Click">噪声校准</Button>
+
+                        <TextBox Grid.Row="1" Grid.Column="1"  IsReadOnly="True" Name="txtInCal" Height="25" VerticalContentAlignment="Center" Margin="16,0,0,0"></TextBox>
+                        <Button Grid.Row="1" Grid.Column="2" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom"   Name="doInCal" 
+                                Click="doInCal_Click">输入校准</Button>
+
+                        <TextBox Grid.Row="1" Grid.Column="3"  IsReadOnly="True" Name="txtOutCal" Height="25" VerticalContentAlignment="Center" Margin="16,0,0,0"></TextBox>
+                        <Button Grid.Row="1" Grid.Column="4" Width="80" Margin="5,0,5,2" Height="25" VerticalAlignment="Bottom"   Name="doOutCal" 
+                                Click="doOutCal_Click">输出校准</Button>
+
+                    </Grid>
+                </StackPanel>-->
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <ProgressBar Name="pBar" Width="600"   IsIndeterminate="False"></ProgressBar>
+                    <Button Margin="10,0" Height="30" Width="80" Name="doTest" Click="doTest_Click">执  行</Button>
+                    <Button Margin="10,0" Height="30" Width="80" Name="doStop" Click="doStop_Click">停  止</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <ProgressBar Name="pReportBar" Width="600" IsIndeterminate="False" ></ProgressBar>
+                    <Button  Margin="20,0" Name="btnReport" Height="30" Width="174" Click="btnReport_Click">生成报告</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Height="25">起始位置：</Label>
+                    <TextBox Width="80" Height="25" Name="txtStartIndex"></TextBox>
+                    <Label Height="25" Margin="20,0,0,0">数据长度：</Label>
+                    <TextBox Width="80" Height="25" Name="txtTestLength"></TextBox>
+                    <Button  Margin="300,0" Name="btnDebug" Height="30" Width="173" Click="btnDebug_Click">增益调节</Button>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+
+
+    </Grid>
+</Window>

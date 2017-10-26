@@ -1,0 +1,27 @@
+﻿<Application x:Class="RAC_Test.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RAC_Test"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <Style TargetType="{x:Type TextElement }">
+            <Setter Property="FontFamily" Value="Arial,SimSun"/>
+         
+
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Arial,SimSun"></Setter>
+         
+
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="Arial,SimSun"></Setter>
+           
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Arial,SimSun"></Setter>
+           
+        </Style>
+    </Application.Resources>
+</Application>
